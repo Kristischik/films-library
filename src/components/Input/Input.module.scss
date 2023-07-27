@@ -1,0 +1,65 @@
+@import "src/styles/colors";
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 18px 20px;
+  background-color: $graphite;
+  border: 2px solid transparent;
+  outline: 0;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: $secondary;
+  border-radius: 10px;
+  resize: none;
+  &:hover,
+  &:focus {
+    border-color: $primary;
+    color: $white;
+  }
+  &:active {
+    border: 2px solid transparent;
+  }
+  &::placeholder {
+    color: $light;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  color: $light;
+  background-color: $secondary;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: $secondary;
+  margin-bottom: 8px;
+}
+.errorText {
+  color: $error;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 4px;
+}
+
+.errorInput {
+  border-color: $error;
+  background-color: $graphite;
+  color: $secondary;
+}
+
+.darkContainer {
+  .title {
+    color: $white;
+  }
+}
