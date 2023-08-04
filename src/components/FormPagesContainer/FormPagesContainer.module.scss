@@ -1,0 +1,36 @@
+@import "src/styles/colors";
+
+.container {
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.formContainer {
+  margin: 72px auto 0 auto;
+  flex: 1;
+  width: 574px;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: $dark;
+}
+
+.fieldsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+.button {
+  margin-top: 40px;
+}
+
+//.darkContainer {
+//  background-color: $secondary;
+//
+//  .formContainer {
+//    border-color: $gray;
+//  }
+//}

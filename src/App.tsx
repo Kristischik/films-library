@@ -6,32 +6,14 @@ import Tab from "./components/TabsList/Tab";
 import TabsList from "./components/TabsList";
 import { TabsTypes } from "./@types";
 import Username from "./components/Username";
+import {BookmarkIcon} from "./assets/icons";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
-  const [inputValue, setInputValue] = useState("");
-  const onChange = (value: string) => {
-    setInputValue(value);
-  };
 
   return (
     <div>
-      <Button type={ButtonTypes.Primary} title={"Primary"} onClick={() => {}} />
-      <Button
-        type={ButtonTypes.Secondary}
-        title={"Secondary"}
-        onClick={() => {}}
-      />
-      <Input
-        // disabled={true}
-        title={"Title"}
-        placeholder={"Placeholder"}
-        onChange={onChange}
-        value={inputValue}
-      />
-      <Tab title={"Title"} />
-
-      <Username username={"Kristina"}/>
-
+      <SignUp/>
     </div>
   );
 };
