@@ -14,7 +14,7 @@ type InputProps = {
   disabled?: boolean;
   errorText?: string;
   className?: string;
-  onKeyDown?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const Input: FC<InputProps> = ({
