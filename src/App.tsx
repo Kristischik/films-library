@@ -5,6 +5,7 @@ import Input from "./components/Input";
 import Tab from "./components/TabsList/Tab";
 import TabsList from "./components/TabsList";
 import { TabsTypes } from "./@types";
+import Username from "./components/Username";
 
 const App = () => {
   const [inputValue, setInputValue] = useState("");
@@ -28,6 +29,8 @@ const App = () => {
         value={inputValue}
       />
       <Tab title={"Title"} />
+
+      <Username username={"Kristina"}/>
 
     </div>
   );
