@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styles from "./Username.module.scss";
+import {ArrowDown} from "../../assets/icons";
 
 type UsernameProps = {
   username: string;
@@ -14,6 +15,7 @@ const Username: FC<UsernameProps> = ({ username }) => {
     <div className={styles.container}>
       <div className={styles.initials}>{username[0]}</div>
       <div className={styles.username}>{username}</div>
+      <ArrowDown/>
     </div>
   );
 };
