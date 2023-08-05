@@ -1,13 +1,12 @@
 import React from "react";
 
-
-import SignIn from "./pages/SignIn";
+import ResetPasswordConfirmation from "./pages/ResetPasswordConfirmation";
 
 const App = () => {
 
   return (
     <div>
-      <SignIn/>
+      <ResetPasswordConfirmation/>
     </div>
   );
 };
