@@ -1,0 +1,65 @@
+@import "src/styles/colors";
+
+.container {
+  width: 1186px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: $dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.title {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: $white;
+  margin-bottom: 16px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.usedTheme {
+  color: $white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 4px;
+}
+
+.themeDescription {
+  color: $light;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.button {
+  padding: 30px;
+  &:hover {
+    cursor: pointer;
+    svg > path {
+      fill: $primary;
+    }
+  }
+}
+
+.activeButton {
+  svg > path {
+    fill: $white;
+  }
+}
