@@ -58,8 +58,12 @@
   color: $secondary;
 }
 
-.darkContainer {
+.lightContainer {
+  .input {
+    background-color: $white;
+    border: 2px solid $light
+  }
   .title {
-    color: $white;
+    color: $dark;
   }
 }

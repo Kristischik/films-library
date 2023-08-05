@@ -8,8 +8,8 @@ import classNames from "classnames";
 // import {signInUser} from "src/redux/reducers/authSlice";
 // import {RoutesList} from "src/pages/Router";
 
-import FormPagesContainer from "../../components/FormPagesContainer";
-import Input from "../../components/Input";
+import FormPagesContainer from "src/components/FormPagesContainer";
+import Input from "src/components/Input";
 
 import styles from "./SignIn.module.scss";
 

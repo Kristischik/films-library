@@ -1,8 +1,8 @@
 import React, { ChangeEvent, KeyboardEvent, FC } from "react";
 import classNames from "classnames";
 
-// import {useThemeContext} from "src/context/Theme";
-// import {Theme} from "src/@types";
+import { useThemeContext } from "src/context/Theme";
+import { Theme } from "src/@types";
 
 import styles from "./Input.module.scss";
 
@@ -18,19 +18,17 @@ type InputProps = {
 };
 
 const Input: FC<InputProps> = ({
-                                 title,
-                                 errorText,
-                                 placeholder,
-                                 onChange,
-                                 disabled,
-                                 value,
-                                 onKeyDown
-                               }) => {
+  title,
+  errorText,
+  placeholder,
+  onChange,
+  disabled,
+  value,
+  onKeyDown,
+}) => {
 
-  // const { themeValue } = useThemeContext();
-  const onInputChange = (
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
+  const { themeValue } = useThemeContext();
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
 
@@ -42,15 +40,15 @@ const Input: FC<InputProps> = ({
       [styles.disabled]: disabled,
       [styles.errorInput]: errorText,
     }),
-    onKeyDown
+    onKeyDown,
   };
 
   return (
-    <div  className={classNames(styles.container,
-    //   {
-    //   [styles.darkContainer]: themeValue === Theme.Dark,
-    // }
-    )}>
+    <div
+      className={classNames(styles.container, {
+        [styles.lightContainer]: themeValue === Theme.Light,
+      })}
+    >
       <div className={styles.title}>{title}</div>
       <input {...inputProps} />
       {errorText && <div className={styles.errorText}>{errorText}</div>}

@@ -6,8 +6,8 @@ import classNames from "classnames";
 // import {useDispatch} from "react-redux";
 // import {resetPassword} from "src/redux/reducers/authSlice";
 
-import FormPagesContainer from "../../components/FormPagesContainer";
-import Input from "../../components/Input";
+import FormPagesContainer from "src/components/FormPagesContainer";
+import Input from "src/components/Input";
 
 import styles from "./ResetPassword.module.scss";
 

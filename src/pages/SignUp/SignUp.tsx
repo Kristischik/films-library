@@ -1,26 +1,22 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-// import {useThemeContext} from "src/context/Theme";
-// import { Theme } from "src/@types";
 // import { useDispatch } from "react-redux";
 // import { signUpUser } from "src/redux/reducers/authSlice";
 
-import FormPagesContainer from "../../components/FormPagesContainer";
-import Input from "../../components/Input";
+import FormPagesContainer from "src/components/FormPagesContainer";
+import Input from "src/components/Input";
 
 import styles from "./SignUp.module.scss";
 
 const SignUp = () => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   // const dispatch = useDispatch();
-  // const { themeValue } = useThemeContext();
-  //
+
   const onSubmit = () => {
     const data = {
       username: name,
@@ -36,11 +32,7 @@ const SignUp = () => {
       btnTitle={"Sign Up"}
       onSubmit={onSubmit}
       additionalInfo={
-        <div  className={classNames(styles.additionalInfo,
-        //   {
-        //   [styles.darkAdditionalInfo]: themeValue === Theme.Dark,
-        // }
-        )}>
+        <div className={styles.additionalInfo}>
           {"Already have an account?"}
           <span className={styles.signIn}>Sign In</span>
         </div>

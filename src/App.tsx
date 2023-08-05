@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-import ResetPasswordConfirmation from "./pages/ResetPasswordConfirmation";
+import { ThemeProvider } from "./context/Theme";
+import { Theme } from "./@types";
+import ThemeSwitcher from "./components/ThemeSwitcher";
+
+import SignUp from "./pages/SignUp";
 
 const App = () => {
+  const [themeValue, setThemeValue] = useState<Theme>(Theme.Dark);
+  const onChangeTheme = (value: Theme) => () => {
+    setThemeValue(value)
+  };
 
   return (
     <div>
-      <ResetPasswordConfirmation/>
+      <ThemeProvider themeValue={themeValue} onChangeTheme={onChangeTheme}>
+       <ThemeSwitcher/>
+        <SignUp/>
+      </ThemeProvider>
     </div>
   );
 };

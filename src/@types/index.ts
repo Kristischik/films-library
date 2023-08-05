@@ -1,6 +1,7 @@
+import {ReactElement} from "react";
 
 
-export interface Episode {
+export type Episode = {
   name: string,
   description: string,
   poster: string,
@@ -15,9 +16,11 @@ export interface Episode {
   credits: [],
 }
 
+export type EpisodeList = Episode[];
+
 export enum TabsTypes {
-  Text1 = "text1",
-  Text2 = "text2",
+  Rating = "Rating",
+  Year = "Year",
 }
 
 export type Tab = {
@@ -26,3 +29,9 @@ export type Tab = {
 };
 
 export type TabsListType = Tab[];
+
+export type Children = ReactElement | ReactElement[];
+export enum Theme {
+  Light = "light",
+  Dark = "dark",
+}
