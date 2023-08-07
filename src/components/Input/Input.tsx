@@ -7,7 +7,7 @@ import { Theme } from "src/@types";
 import styles from "./Input.module.scss";
 
 type InputProps = {
-  title: string;
+  title?: string;
   placeholder: string;
   onChange: (value: string) => void;
   value: string;

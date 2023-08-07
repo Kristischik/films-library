@@ -1,7 +1,8 @@
 import {ReactElement} from "react";
 
 
-export type Episode = {
+export type Post = {
+  id: number,
   name: string,
   description: string,
   poster: string,
@@ -16,7 +17,22 @@ export type Episode = {
   credits: [],
 }
 
-export type EpisodeList = Episode[];
+export type PostsList = Post[];
+
+export enum MenuButtonTypes {
+  Home = "home",
+  Trends = "trends",
+  Favourites = "favourites",
+  Settings = "settings",
+}
+
+export type MenuButton = {
+  key: MenuButtonTypes;
+  title: string;
+  icon: ReactElement;
+};
+
+export type MenuButtonListType = MenuButton[];
 
 export enum TabsTypes {
   Rating = "Rating",

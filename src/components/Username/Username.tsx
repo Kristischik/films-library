@@ -15,7 +15,8 @@ const Username: FC<UsernameProps> = ({ username }) => {
     <div className={styles.container}>
       <div className={styles.initials}>{username[0]}</div>
       <div className={styles.username}>{username}</div>
-      <ArrowDown/>
+      <div className={styles.arrowDown}> <ArrowDown/></div>
+
     </div>
   );
 };

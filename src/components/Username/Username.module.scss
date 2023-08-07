@@ -1,10 +1,12 @@
 @import "src/styles/colors";
 
 .container {
-  background-color: $dark;
+  background-color: $black;
   align-items: center;
   display: flex;
+  justify-content: space-between;
   gap: 20px;
+
 }
 
 .initials {
@@ -29,4 +31,8 @@
   font-size: 16px;
   line-height: 24px;
   color: $white;
+}
+
+.arrowDown {
+
 }

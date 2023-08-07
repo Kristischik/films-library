@@ -1,0 +1,40 @@
+@import "/src/styles/colors.scss";
+
+.menuButton {
+  width: 123px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  .icon {
+    &:hover {
+      svg > path {
+        fill: $primary2;
+      }
+    }
+  }
+
+  .title {
+    color: $secondary;
+    font-family: "Exo 2", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: 20px;
+    &:hover {
+      color: $primary2;
+    }
+  }
+}
+
+.active {
+  .icon {
+    svg > path {
+      fill: $primary;
+    }
+  }
+  .title {
+    color: $primary;
+  }
+}

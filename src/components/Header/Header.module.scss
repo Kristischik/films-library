@@ -1,0 +1,64 @@
+@import "src/styles/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  position: relative;
+}
+
+.lightContainer {
+  background-color: $white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $black;
+  position: relative;
+  padding: 40px 64px 56px;
+}
+
+.searchContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pixema {
+  padding-right: 146px;
+}
+.infoContainer {
+  margin: 72px auto 0 auto;
+}
+
+.searchInput {
+  display: flex;
+}
+
+.searchButtonContainer {
+  display: flex;
+  align-items: center;
+}
+
+.searchButton {
+  background-color: transparent;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 72px;
+  padding: 32px 64px;
+  color: $light;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.mainContainer {
+  display: flex;
+}
