@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import classNames from "classnames";
 
-// import { useDispatch } from "react-redux";
-// import { signUpUser } from "src/redux/reducers/authSlice";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "src/redux/reducers/authSlice";
 
 import FormPagesContainer from "src/components/FormPagesContainer";
 import Input from "src/components/Input";
@@ -15,15 +14,16 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     const data = {
-      username: name,
+      name,
       email,
       password,
+      token_name: '',
     };
-    // dispatch(signUpUser({ data, callback: () => {} }));
+    dispatch(signUpUser({ data, callback: () => {} }));
   };
 
   return (
