@@ -1,12 +1,14 @@
-import React, {useMemo, useState, KeyboardEvent, ReactElement, FC, useEffect} from "react";
+import React, { FC, useMemo, useState } from "react";
 
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import {
+  ArrowDown, CloseIcon,
   FavouritesIcon,
   HomeIcon,
   PixemaIcon,
-  SearchIcon, SettingsIcon,
+  SearchIcon,
+  SettingsIcon,
   TrendsIcon,
 } from "src/assets/icons";
 
@@ -16,7 +18,7 @@ import { RoutesList } from "src/pages/Router";
 import Username from "src/components/Username";
 import { useThemeContext } from "src/context/Theme";
 import classNames from "classnames";
-import {MenuButtonTypes, Theme} from "src/@types";
+import { MenuButtonTypes, Theme } from "src/@types";
 import Input from "src/components/Input";
 // import {useDispatch, useSelector} from "react-redux";
 // import {AuthSelectors, logoutUser} from "src/redux/reducers/authSlice";
@@ -24,6 +26,7 @@ import Input from "src/components/Input";
 import Button from "src/components/Button";
 import { ButtonTypes } from "src/components/Button/Button";
 import MenuButtonList from "src/components/MenuButtonList";
+import Filters from "src/components/Filters";
 
 type MenuProps = {
   onClick?: () => void;
@@ -36,17 +39,26 @@ const Header: FC<MenuProps> = (onClick, active) => {
   const isLoggedIn = true;
   // const isLoggedIn = useSelector(AuthSelectors.getLoggedIn)
 
-  const [activeMenuButton, setActiveMenuButton] = useState(MenuButtonTypes.Home);
+  const [activeMenuButton, setActiveMenuButton] = useState(
+    MenuButtonTypes.Home,
+  );
   const menuButtonList = useMemo(
     () => [
-      { key: MenuButtonTypes.Home, title: "Home", icon: <HomeIcon/> },
-      { key: MenuButtonTypes.Trends, title: "Trends", icon: <TrendsIcon/> },
-      { key: MenuButtonTypes.Favourites, title: "Favourites", icon: <FavouritesIcon/> },
-      { key: MenuButtonTypes.Settings, title: "Settings", icon: <SettingsIcon/> },
+      { key: MenuButtonTypes.Home, title: "Home", icon: <HomeIcon /> },
+      { key: MenuButtonTypes.Trends, title: "Trends", icon: <TrendsIcon /> },
+      {
+        key: MenuButtonTypes.Favourites,
+        title: "Favourites",
+        icon: <FavouritesIcon />,
+      },
+      {
+        key: MenuButtonTypes.Settings,
+        title: "Settings",
+        icon: <SettingsIcon />,
+      },
     ],
-    []
+    [],
   );
-
 
   const [isOpened, setOpened] = useState(false);
   const [isSearch, setSearch] = useState(false);
@@ -62,6 +74,10 @@ const Header: FC<MenuProps> = (onClick, active) => {
     [isLoggedIn],
   );
 
+  const handleFiltersOpened = () => {
+    setOpened(!isOpened);
+  };
+
   // const handleSearchOpened = () => {
   //   setSearch(!isSearch);
   //   if (isSearch && inputValue) {
@@ -70,7 +86,6 @@ const Header: FC<MenuProps> = (onClick, active) => {
   //     setInputValue("");
   //   }
   // };
-
 
   const onMenuButtonClick = (menuButton: MenuButtonTypes) => () => {
     setActiveMenuButton(menuButton);
@@ -129,7 +144,15 @@ const Header: FC<MenuProps> = (onClick, active) => {
           {/*  onClick={onLoginButtonClick}*/}
           {/*  className={styles.userButton}*/}
           {/*/>}*/}
+
           <Username username={"Kristina"} />
+
+          <Button
+            type={ButtonTypes.Primary}
+            title={<ArrowDown/>}
+            onClick={handleFiltersOpened}
+            className={styles.filtersButton}
+          />
 
           {/*<Button*/}
           {/*  type={ButtonTypes.Primary}*/}
@@ -141,15 +164,22 @@ const Header: FC<MenuProps> = (onClick, active) => {
       </div>
 
       <div className={styles.mainContainer}>
-
-        <MenuButtonList menuButtonList={menuButtonList} activeMenuButton={activeMenuButton} onMenuButtonClick={onMenuButtonClick}/>
+        <MenuButtonList
+          menuButtonList={menuButtonList}
+          activeMenuButton={activeMenuButton}
+          onMenuButtonClick={onMenuButtonClick}
+        />
 
         <div className={styles.infoContainer}>
           <Outlet />
         </div>
-
       </div>
       <div className={styles.footer}>©All rights reserved</div>
+
+      {isOpened && (
+        <Filters onClick={()=>{}} onSubmit={()=>{}}/>
+      )}
+
     </div>
   );
 };
