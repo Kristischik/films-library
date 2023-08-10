@@ -4,27 +4,18 @@ import styles from "./Card.module.scss";
 
 type CardProps = {
   id?: number,
-  name: string,
-  description?: string,
-  poster: string,
-  release_date?: string,
-  season_number?: number,
-  episode_number?: number,
-  year?: number,
-  popularity?: number,
-  rating?: number,
-  vote_count?: number,
-  genres?: [],
-  credits?: [],
+  primaryImage?:{url: string} ,
+  titleText?: {text: string},
+  releaseYear?: {year: number},
 };
 
-const Card: FC<CardProps> = ({name, poster}) => {
+const Card: FC<CardProps> = ({titleText, primaryImage}) => {
   return  (
     <div className={styles.container}>
       <div className={styles.poster}>
-        <img  src={poster} alt="#" />
+        <img  src={primaryImage?.url} alt="#" />
       </div>
-      <div className={styles.text}>{name}</div>
+      <div className={styles.text}>{titleText?.text}</div>
     </div>
   )
 };

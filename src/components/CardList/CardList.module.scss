@@ -1,6 +1,10 @@
 
+.container {
+ padding-left: 50px;
+  padding-right: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-//.container {
-//  display: flex;
-//  justify-content: space-between;
-//}
+
+}

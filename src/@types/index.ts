@@ -3,18 +3,9 @@ import {ReactElement} from "react";
 
 export type Post = {
   id: number,
-  name: string,
-  description: string,
-  poster: string,
-  release_date: string,
-  season_number: number,
-  episode_number: number,
-  year: number,
-  popularity: number,
-  rating: number,
-  vote_count: number,
-  genres: [],
-  credits: [],
+  primaryImage:{url: string} ,
+  titleText: {text: string},
+  releaseYear: {year: number},
 }
 
 export type PostsList = Post[];

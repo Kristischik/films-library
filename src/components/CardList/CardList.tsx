@@ -14,6 +14,7 @@ const CardList: FC<CardListProps> = ({ cardsList }) => {
 
 
   return  (
+
     <div>
       <div className={styles.container}>
         {cardsList.map((el) => {

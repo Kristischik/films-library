@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import styles from "./Username.module.scss";
-import {ArrowDown} from "../../assets/icons";
 
-type UsernameProps = {
+export type UsernameProps = {
   username: string;
 };
 

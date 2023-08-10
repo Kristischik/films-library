@@ -7,11 +7,13 @@ import SignUp from "src/pages/SignUp";
 import Header from "src/components/Header";
 import Home from "src/pages/Home";
 import SignIn from "src/pages/SignIn";
+import Settings from "src/pages/Settings";
 
 export enum RoutesList {
   Home = "/",
   SignUp = "/sign-up",
   SignIn = "/sign-in",
+  Settings = "/settings",
 
   Default = "*",
 }
@@ -25,6 +27,7 @@ const Router = () => {
           <Route path={RoutesList.SignUp} element={ <SignUp />} />
           <Route path={RoutesList.SignIn} element={ <SignIn />} />
           {/*<Route path={RoutesList.SelectedPost} element={<SelectedPost />} />*/}
+          <Route path={RoutesList.Settings} element={ <Settings />} />
 
 
           <Route
