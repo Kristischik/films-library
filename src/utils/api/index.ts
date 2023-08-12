@@ -18,8 +18,17 @@ const getPosts = () => {
   return API.get("/titles");
 };
 
+const getSingleFilm = (id: string) => {
+  return API.get(`/titles/${id}/`);
+};
+
+const getSearchedFilms = (title: string) => {
+  return API.get(`/titles/search/title/${title}`);
+}
 
 export default {
   signUpUser,
   getPosts,
+  getSingleFilm,
+  getSearchedFilms,
 };

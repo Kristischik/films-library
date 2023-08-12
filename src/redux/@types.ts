@@ -1,4 +1,5 @@
-import { PostsList } from "src/@types";
+import {Post, PostsList} from "src/@types";
+import title from "src/components/Title";
 
 export type PayloadWithDataAndCallback<Data> = {
   data: Data;
@@ -28,10 +29,28 @@ export type SignUpResponseData = {
 
 
 export type PostListResponseData = {
-  page: number,
-  next: string,
-  entries: number,
-  results: PostsList,
+  page: number;
+  next: string;
+  entries: number;
+  results: PostsList;
+};
+
+export type SingleFilmResponseData = {
+  page: number;
+  next: string;
+  entries: number;
+  results: Post;
+};
+
+export type GetSearchedPostsPayload = {
+  title: string;
+};
+export type SetSearchedPostsPayload = Omit<SetPostsListPayload, "isOverwrite">; // взяли тип и выбросили то, что не надо
+
+export type SetPostsListPayload = {
+title: string,
+  postsList: PostsList;
+
 };
 
 

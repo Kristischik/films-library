@@ -1,21 +1,25 @@
 import React, { FC } from "react";
-import classNames from "classnames";
+
+import {useNavigate} from "react-router-dom";
+import {Post} from "src/@types";
+
 import styles from "./Card.module.scss";
 
-type CardProps = {
-  id?: number,
-  primaryImage?:{url: string} ,
-  titleText?: {text: string},
-  releaseYear?: {year: number},
-};
 
-const Card: FC<CardProps> = ({titleText, primaryImage}) => {
+const Card: FC<Post> = ({id,titleText,primaryImage}) => {
+
+  const navigate = useNavigate();
+
+  const onTitleClick = () => {
+    navigate(`/film/${id}/`);
+  };
+
   return  (
     <div className={styles.container}>
       <div className={styles.poster}>
         <img  src={primaryImage?.url} alt="#" />
       </div>
-      <div className={styles.text}>{titleText?.text}</div>
+      <div className={styles.text}  onClick={onTitleClick}>{titleText.text}</div>
     </div>
   )
 };

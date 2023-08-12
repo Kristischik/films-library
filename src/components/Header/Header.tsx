@@ -3,7 +3,8 @@ import React, { FC, useMemo, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import {
-  ArrowDown, CloseIcon,
+  ArrowDown,
+  CloseIcon,
   FavouritesIcon,
   HomeIcon,
   PixemaIcon,
@@ -27,6 +28,7 @@ import Button from "src/components/Button";
 import { ButtonTypes } from "src/components/Button/Button";
 import MenuButtonList from "src/components/MenuButtonList";
 import Filters from "src/components/Filters";
+import home from "src/pages/Home";
 
 type MenuProps = {
   onClick?: () => void;
@@ -34,17 +36,46 @@ type MenuProps = {
 };
 
 const Header: FC<MenuProps> = (onClick, active) => {
+  const navigate = useNavigate();
   const { themeValue } = useThemeContext();
   // const dispatch = useDispatch()
   const isLoggedIn = true;
-  // const isLoggedIn = useSelector(AuthSelectors.getLoggedIn)
+
 
   const [activeMenuButton, setActiveMenuButton] = useState(
     MenuButtonTypes.Home,
   );
+
+  // const onHomeClick = () => {
+  //   navigate(RoutesList.Home);
+  // };
+  //
+  // const onSettingsClick = () => {
+  //   navigate(RoutesList.Settings);
+  // };
+  const onMenuButtonClick = (menuButton: MenuButtonTypes) => () => {
+    setActiveMenuButton(menuButton);
+  };
+  const menuSwitcher = () => {
+    switch (activeMenuButton) {
+      case MenuButtonTypes.Home:
+        return navigate(RoutesList.Home);
+      case MenuButtonTypes.Settings:
+        return navigate(RoutesList.Settings);
+      default:
+        return navigate(RoutesList.Home);
+    }
+  };
+
+
   const menuButtonList = useMemo(
     () => [
-      { key: MenuButtonTypes.Home, title: "Home", icon: <HomeIcon /> },
+      {
+        key: MenuButtonTypes.Home,
+        title: "Home",
+        icon: <HomeIcon />,
+        onClick: {menuSwitcher},
+      },
       { key: MenuButtonTypes.Trends, title: "Trends", icon: <TrendsIcon /> },
       {
         key: MenuButtonTypes.Favourites,
@@ -55,6 +86,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
         key: MenuButtonTypes.Settings,
         title: "Settings",
         icon: <SettingsIcon />,
+        onClick: {menuSwitcher},
       },
     ],
     [],
@@ -64,7 +96,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
   const [isSearch, setSearch] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const navigate = useNavigate();
+
 
   const navLinks = useMemo(
     () => [
@@ -87,18 +119,13 @@ const Header: FC<MenuProps> = (onClick, active) => {
   //   }
   // };
 
-  const onMenuButtonClick = (menuButton: MenuButtonTypes) => () => {
-    setActiveMenuButton(menuButton);
-  };
+
   const onLoginButtonClick = () => {
     navigate(RoutesList.SignIn);
   };
 
-  // const userInfo = useSelector(AuthSelectors.getUserInfo);
-  //
-  // const onLogout = () => {
-  //   dispatch(logoutUser());
-  // };
+
+
 
   // const onKeyDown = (
   //   event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -138,28 +165,17 @@ const Header: FC<MenuProps> = (onClick, active) => {
             onClick={() => {}}
             className={styles.searchButton}
           />
-          {/*{isLoggedIn && userInfo ? <Username username = {userInfo.username} /> : <Button*/}
-          {/*  type={ButtonTypes.Primary}*/}
-          {/*  title={<UserIcon />}*/}
-          {/*  onClick={onLoginButtonClick}*/}
-          {/*  className={styles.userButton}*/}
-          {/*/>}*/}
 
           <Username username={"Kristina"} />
 
           <Button
             type={ButtonTypes.Primary}
-            title={<ArrowDown/>}
+            title={<ArrowDown />}
             onClick={handleFiltersOpened}
             className={styles.filtersButton}
           />
 
-          {/*<Button*/}
-          {/*  type={ButtonTypes.Primary}*/}
-          {/*  title={<UserIcon />}*/}
-          {/*  onClick={onLoginButtonClick}*/}
-          {/*  className={styles.userButton}*/}
-          {/*/>*/}
+
         </div>
       </div>
 
@@ -176,10 +192,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
       </div>
       <div className={styles.footer}>©All rights reserved</div>
 
-      {isOpened && (
-        <Filters onClick={()=>{}} onSubmit={()=>{}}/>
-      )}
-
+      {isOpened && <Filters onClick={() => {}} onSubmit={() => {}} />}
     </div>
   );
 };

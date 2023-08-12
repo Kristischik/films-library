@@ -11,4 +11,5 @@ export { TrendsIcon } from "./TrendsIcon";
 export { FavouritesIcon } from "./FavouritesIcon";
 export { SettingsIcon} from "./SettingsIcon";
 export { PixemaIcon } from "./PixemaIcon";
+export { EmptyIcon } from "./EmptyIcon";
 
