@@ -42,6 +42,35 @@ export type Post = {
     year:number,
     __typename: string,
   }
+
+  ratingsSummary: {
+    aggregateRating: number,
+    voteCount: number,
+    __typename: string,
+  }
+  episodes: number,
+  genres: {
+    genres:  [
+      text: string,
+    id: string,
+    __typename: string,
+    ]
+    __typename: string,
+  }
+
+  plot: {
+    plotText: {
+      plainText: string,
+      __typename: string,
+  }
+      language: {
+        id: string,
+        __typename: string,
+      }
+    __typename: string,
+  }
+
+  onSaveClick?: () => void;
 }
 
 export type PostsList = Post[];

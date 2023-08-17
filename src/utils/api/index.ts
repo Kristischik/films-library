@@ -1,5 +1,6 @@
 import { create } from "apisauce";
 import {SignUpUserData} from "src/redux/@types";
+import {PER_PAGE} from "src/utils/constants";
 
 
 const API = create({
@@ -15,11 +16,11 @@ const signUpUser = (data: SignUpUserData) => {
 };
 
 const getPosts = () => {
-  return API.get("/titles");
+  return API.get("/titles" , {limit: PER_PAGE, list: "top_boxoffice_200"});
 };
 
 const getSingleFilm = (id: string) => {
-  return API.get(`/titles/${id}/`);
+  return API.get(`/titles/${id}/`, {info: "base_info"});
 };
 
 const getSearchedFilms = (title: string) => {

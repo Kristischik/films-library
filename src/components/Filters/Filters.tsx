@@ -50,13 +50,13 @@ const Filters: FC<FiltersType> = (onClick, onSubmit) => {
         <div className={styles.genreContainer}></div>
       </div>
 
-      <div>
+      <div className={styles.inputContainer}>
         <Input title={"Years"} placeholder={"From"} onChange={() =>{}} value={''}/>
         <Input placeholder={"To"} onChange={() =>{}} value={''}/>
       </div>
 
 
-      <div>
+      <div className={styles.inputContainer}>
         <Input title={"Rating"} placeholder={"From"} onChange={() =>{}} value={''}/>
         <Input placeholder={"To"} onChange={() =>{}} value={''}/>
       </div>

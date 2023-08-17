@@ -7,9 +7,6 @@
   position: relative;
 }
 
-.lightContainer {
-  background-color: $white;
-}
 
 .header {
   display: flex;
@@ -69,5 +66,73 @@
 }
 
 .mainContainer {
+  background-color: $black;
   display: flex;
+
+}
+
+.navLinkButtons {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 0 64px;
+  gap: 40px;
+  width: 150px;
+}
+
+.navLinkButton {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  &:hover {
+    .icon {
+      svg > path {
+        fill: $primary2;
+      }
+    }
+   .title {
+     color: $primary2;
+   }
+  ;
+  }
+
+}
+
+.title {
+  color: $white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-left: 20px;
+
+}
+
+.active {
+  .icon {
+    svg > path {
+      fill: $primary;
+    }
+  }
+  .title {
+    color: $primary;
+  }
+}
+
+
+.lightContainer {
+ .container {
+   background-color: $white;
+ }
+
+ .header {
+   background-color: $white;
+ }
+  .mainContainer {
+    background-color: $white;
+  }
+  .title {
+    color: $black;
+  }
 }

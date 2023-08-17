@@ -1,6 +1,5 @@
 @import "src/styles/colors";
 
-
 .container {
   display: flex;
   gap: 42px;
@@ -26,12 +25,27 @@
   }
 }
 
-.singleMovieInfo {
-  text-align: start;
-  padding-right: 367px;
-  // margin-bottom: 56px;
+.containerButtons {
+  display: flex;
+  svg > path {
+    fill: $white;
+  }
+
+  .icon {
+    width: 133px;
+  }
 }
 
+.singleMovieInfo {
+  text-align: start;
+}
+.genres {
+  color: $light;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
 .name {
   color: $white;
   font-family: "Exo 2", sans-serif;
@@ -41,32 +55,72 @@
   line-height: 60px;
 }
 
+.infoNumbers {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-bottom: 42px;
+  margin-top: 26px;
+
+  .rating {
+    padding: 0 8px;
+    background-color: $green;
+    border-radius: 6px;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $white;
+  }
+
+  .ratingImdb, .time {
+    padding: 0 8px;
+    background-color: $graphite;
+    border-radius: 6px;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $white;
+  }
+}
+
+.filmDescription {
+  color: $white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 40px;
+}
+
 
 .description {
   font-family: "Exo 2", sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: $white;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .descriptionInfo {
   display: flex;
-  gap: 67px;
+  gap: 55px;
+  list-style: none;
 }
 
 .descriptionInfo li {
   margin-bottom: 20px;
 }
 
-.descriptionInfo li:last-child{
+.descriptionInfo li:last-child {
   margin-bottom: 0;
 }
 
 ul {
   list-style-type: none;
+  padding-inline-start: 0;
 }
 
 .descriptionInfoLeft {
@@ -75,7 +129,7 @@ ul {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: $light
+  color: $light;
 }
 
 .descriptionInfoRight {
@@ -84,5 +138,5 @@ ul {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: $white
+  color: $white;
 }

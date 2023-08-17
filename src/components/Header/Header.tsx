@@ -1,11 +1,9 @@
 import React, { FC, useMemo, useState } from "react";
-
-import { Outlet, useNavigate } from "react-router-dom";
-
+import classNames from "classnames";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   ArrowDown,
-  CloseIcon,
-  FavouritesIcon,
+  BookmarkIconSaved,
   HomeIcon,
   PixemaIcon,
   SearchIcon,
@@ -13,80 +11,121 @@ import {
   TrendsIcon,
 } from "src/assets/icons";
 
-import styles from "./Header.module.scss";
-
 import { RoutesList } from "src/pages/Router";
 import Username from "src/components/Username";
 import { useThemeContext } from "src/context/Theme";
-import classNames from "classnames";
 import { MenuButtonTypes, Theme } from "src/@types";
 import Input from "src/components/Input";
-// import {useDispatch, useSelector} from "react-redux";
-// import {AuthSelectors, logoutUser} from "src/redux/reducers/authSlice";
-// import {clearSearchedPosts} from "src/redux/reducers/postSlice";
 import Button from "src/components/Button";
 import { ButtonTypes } from "src/components/Button/Button";
-import MenuButtonList from "src/components/MenuButtonList";
 import Filters from "src/components/Filters";
-import home from "src/pages/Home";
 
+import styles from "./Header.module.scss";
 type MenuProps = {
   onClick?: () => void;
   active?: boolean;
 };
 
 const Header: FC<MenuProps> = (onClick, active) => {
-  const navigate = useNavigate();
   const { themeValue } = useThemeContext();
-  // const dispatch = useDispatch()
-  const isLoggedIn = true;
-
 
   const [activeMenuButton, setActiveMenuButton] = useState(
     MenuButtonTypes.Home,
   );
 
-  // const onHomeClick = () => {
-  //   navigate(RoutesList.Home);
-  // };
-  //
-  // const onSettingsClick = () => {
-  //   navigate(RoutesList.Settings);
-  // };
   const onMenuButtonClick = (menuButton: MenuButtonTypes) => () => {
     setActiveMenuButton(menuButton);
   };
-  const menuSwitcher = () => {
-    switch (activeMenuButton) {
-      case MenuButtonTypes.Home:
-        return navigate(RoutesList.Home);
-      case MenuButtonTypes.Settings:
-        return navigate(RoutesList.Settings);
-      default:
-        return navigate(RoutesList.Home);
-    }
-  };
 
-
-  const menuButtonList = useMemo(
+  const navLinks = useMemo(
     () => [
       {
+        path: RoutesList.Home,
         key: MenuButtonTypes.Home,
-        title: "Home",
-        icon: <HomeIcon />,
-        onClick: {menuSwitcher},
+        title: (
+          <div
+            className={classNames(styles.title, {
+              [styles.active]: active,
+            })}
+          >
+            Home
+          </div>
+        ),
+        icon: (
+          <div
+            className={classNames(styles.icon, {
+              [styles.active]: active,
+            })}
+          >
+            <HomeIcon />
+          </div>
+        ),
       },
-      { key: MenuButtonTypes.Trends, title: "Trends", icon: <TrendsIcon /> },
       {
+        path: RoutesList.SignUp,
+        key: MenuButtonTypes.Trends,
+        title: (
+          <div
+            className={classNames(styles.title, {
+              [styles.active]: active,
+            })}
+          >
+            Trends
+          </div>
+        ),
+        icon: (
+          <div
+            className={classNames(styles.icon, {
+              [styles.active]: active,
+            })}
+          >
+            <TrendsIcon />
+          </div>
+        ),
+      },
+      {
+        path: RoutesList.Favourite,
         key: MenuButtonTypes.Favourites,
-        title: "Favourites",
-        icon: <FavouritesIcon />,
+        title: (
+          <div
+            className={classNames(styles.title, {
+              [styles.active]: active,
+            })}
+          >
+            Favourites
+          </div>
+        ),
+        icon: (
+          <div
+            className={classNames(styles.icon, {
+              [styles.active]: active,
+            })}
+          >
+            <BookmarkIconSaved />
+          </div>
+        ),
       },
       {
+        path: RoutesList.Settings,
         key: MenuButtonTypes.Settings,
-        title: "Settings",
-        icon: <SettingsIcon />,
-        onClick: {menuSwitcher},
+        title: (
+          <div
+            className={classNames(styles.title, {
+              [styles.active]: active,
+            })}
+          >
+            Settings
+          </div>
+        ),
+        icon: (
+          <div
+            className={classNames(styles.icon, {
+              [styles.active]: active,
+            })}
+          >
+            <SettingsIcon />
+          </div>
+        ),
       },
     ],
     [],
@@ -95,16 +134,6 @@ const Header: FC<MenuProps> = (onClick, active) => {
   const [isOpened, setOpened] = useState(false);
   const [isSearch, setSearch] = useState(false);
   const [inputValue, setInputValue] = useState("");
-
-
-
-  const navLinks = useMemo(
-    () => [
-      { path: RoutesList.Home, title: "Home" },
-      ...(isLoggedIn ? [{ path: RoutesList.SignUp, title: "Add Post" }] : []),
-    ],
-    [isLoggedIn],
-  );
 
   const handleFiltersOpened = () => {
     setOpened(!isOpened);
@@ -118,14 +147,6 @@ const Header: FC<MenuProps> = (onClick, active) => {
   //     setInputValue("");
   //   }
   // };
-
-
-  const onLoginButtonClick = () => {
-    navigate(RoutesList.SignIn);
-  };
-
-
-
 
   // const onKeyDown = (
   //   event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -174,17 +195,22 @@ const Header: FC<MenuProps> = (onClick, active) => {
             onClick={handleFiltersOpened}
             className={styles.filtersButton}
           />
-
-
         </div>
       </div>
 
       <div className={styles.mainContainer}>
-        <MenuButtonList
-          menuButtonList={menuButtonList}
-          activeMenuButton={activeMenuButton}
-          onMenuButtonClick={onMenuButtonClick}
-        />
+        <div className={styles.navLinkButtons}>
+          {navLinks.map((link) => (
+            <NavLink
+              to={link.path}
+              key={link.path}
+              className={styles.navLinkButton}
+            >
+              {link.icon}
+              {link.title}
+            </NavLink>
+          ))}
+        </div>
 
         <div className={styles.infoContainer}>
           <Outlet />

@@ -8,8 +8,8 @@ export { MoonIcon } from "./MoonIcon";
 export { SearchIcon } from "./SearchIcon";
 export { HomeIcon } from "./HomeIcon";
 export { TrendsIcon } from "./TrendsIcon";
-export { FavouritesIcon } from "./FavouritesIcon";
 export { SettingsIcon} from "./SettingsIcon";
 export { PixemaIcon } from "./PixemaIcon";
 export { EmptyIcon } from "./EmptyIcon";
+export { GroupIcon } from "./GroupIcon";
 

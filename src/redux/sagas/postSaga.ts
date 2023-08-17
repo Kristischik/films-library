@@ -7,25 +7,41 @@ import {
 import API from "src/utils/api";
 import {
   getPostsList, getSingleFilm,
-  setPostsList, setSingleFilm, setSinglePostLoading,
+  setPostsList, setPostsListLoading, setSingleFilm, setSinglePostLoading,
 
 } from "src/redux/reducers/postSlice";
 import {PayloadAction} from "@reduxjs/toolkit";
 
 
 
+// function* postWorker() {
+//   yield put(setPostsListLoading(true));
+//   const response: ApiResponse<PostListResponseData> = yield call(
+//     API.getPosts,
+//   );
+//   if (response.ok && response.data) {
+//     yield put(setPostsList(response.data.results))
+//   } else {
+//     console.error("Post List error", response.problem);
+//   }
+//   yield put(setPostsListLoading(false));
+// }
+
 function* postWorker() {
-  yield put(setSinglePostLoading(true));
+  yield put(setPostsListLoading(true));
   const response: ApiResponse<PostListResponseData> = yield call(
     API.getPosts,
+
   );
   if (response.ok && response.data) {
-    yield put(setPostsList(response.data.results))
+    const { results, entries } = response.data;
+    yield put(setPostsList({postsList: results, total: entries}))
   } else {
     console.error("Post List error", response.problem);
   }
-  yield put(setSinglePostLoading(false));
+  yield put(setPostsListLoading(false));
 }
+
 
 function* getSingleFilmWorker(action: PayloadAction<string>) {
   yield put(setSinglePostLoading(true));
@@ -40,6 +56,8 @@ function* getSingleFilmWorker(action: PayloadAction<string>) {
   }
   yield put(setSinglePostLoading(false));
 }
+
+
 
 
 export default function* postSagaWatcher() {

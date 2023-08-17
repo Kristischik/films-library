@@ -6,7 +6,7 @@ width: 518px;
   display: flex;
   flex-direction: column;
   background-color: $dark;
-  padding: 48px 40px;
+  padding: 30px 30px;
   position: fixed;
   top: 0;
   right: 0;
@@ -28,11 +28,18 @@ width: 518px;
 
 .genreContainer {
   height: 100px;
+  border-radius: 10px;
   background-color: $graphite;
 }
 
 .buttonContainer{
   display: flex;
   justify-content: space-between;
-  margin-top: 111px;
+  margin-top: 15px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

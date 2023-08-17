@@ -1,5 +1,6 @@
 @import "/src/styles/colors.scss";
 
+
 .menuButton {
 
   background-color: transparent;
@@ -7,6 +8,7 @@
   cursor: pointer;
 
   .icon {
+    color: $secondary;
     &:hover {
       svg > path {
         fill: $primary2;
