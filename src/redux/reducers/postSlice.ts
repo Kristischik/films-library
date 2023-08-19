@@ -9,7 +9,7 @@ type InitialState = {
   isPostsListLoading: boolean,
   singleFilm: Post | null;
   singlePostLoading: boolean,
-  searchedFilms: Post | null,
+  searchedFilms: PostsList,
   totalCount: number;
   savedPosts: PostsList,
 };
@@ -19,7 +19,7 @@ const initialState: InitialState = {
   isPostsListLoading: false,
   singleFilm: null,
   singlePostLoading: false,
-  searchedFilms: null,
+  searchedFilms: [],
   totalCount: 0,
   savedPosts: [],
 };
@@ -56,8 +56,11 @@ const postSlice = createSlice({
     },
 
     getSearchedFilms: (_, __: PayloadAction<string>) => {},
-    setSearchedFilms: (state, action: PayloadAction<Post | null>) => {
+    setSearchedFilms: (state, action: PayloadAction<PostsList>) => {
       state.searchedFilms = action.payload;
+    },
+    clearSearchedPosts: (state) => {
+      state.searchedFilms = [];
     },
 
     setSaveStatus: (state, action: PayloadAction<{ card: Post}>) => {
@@ -85,6 +88,7 @@ export const {
   getSearchedFilms,
   setSearchedFilms,
   setSaveStatus,
+  clearSearchedPosts,
 } = postSlice.actions;
 
 export const PostSelectors = {

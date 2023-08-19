@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import classNames from "classnames";
 
-import { useThemeContext } from "../../context/Theme";
-import { Theme } from "../../@types";
+import { useThemeContext } from "src/context/Theme";
+import { Theme } from "src/@types";
 
 import styles from "./Title.module.scss";
 

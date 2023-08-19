@@ -1,15 +1,18 @@
 import React, { FC } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { Post } from "src/@types";
+import {Post, Theme} from "src/@types";
 
 import styles from "./Card.module.scss";
 import {BookmarkIcon, BookmarkIconSaved} from "src/assets/icons";
 import {useSelector} from "react-redux";
 import {PostSelectors} from "src/redux/reducers/postSlice";
+import {useThemeContext} from "src/context/Theme";
+import classNames from "classnames";
 
 const Card: FC<Post> = ({ id, titleText, primaryImage , onSaveClick}) => {
 
+  const { themeValue } = useThemeContext();
   const navigate = useNavigate();
 
   const savedPosts = useSelector(PostSelectors.getSavedPosts);
@@ -21,7 +24,9 @@ const Card: FC<Post> = ({ id, titleText, primaryImage , onSaveClick}) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div  className={classNames(styles.container, {
+      [styles.lightContainer]: themeValue === Theme.Light,
+    })}>
       <div className={styles.poster}>
         <img src={primaryImage?.url} alt="#" />
         <div className={styles.iconsContainer}>

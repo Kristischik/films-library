@@ -6,8 +6,8 @@ import {
 } from "src/redux/@types";
 import API from "src/utils/api";
 import {
-  getPostsList, getSingleFilm,
-  setPostsList, setPostsListLoading, setSingleFilm, setSinglePostLoading,
+  getPostsList, getSearchedFilms, getSingleFilm,
+  setPostsList, setPostsListLoading, setSearchedFilms, setSingleFilm, setSinglePostLoading,
 
 } from "src/redux/reducers/postSlice";
 import {PayloadAction} from "@reduxjs/toolkit";
@@ -34,8 +34,8 @@ function* postWorker() {
 
   );
   if (response.ok && response.data) {
-    const { results, entries } = response.data;
-    yield put(setPostsList({postsList: results, total: entries}))
+    const { results, page } = response.data;
+    yield put(setPostsList({postsList: results, total: page}))
   } else {
     console.error("Post List error", response.problem);
   }
@@ -58,12 +58,26 @@ function* getSingleFilmWorker(action: PayloadAction<string>) {
 }
 
 
+function* getSearchedFilmsWorker(action: PayloadAction<string>) {
+  yield put(setPostsListLoading(true));
+  const response: ApiResponse<PostListResponseData> = yield call(
+    API.getSearchedFilms,
+    action.payload,
+  );
+  if (response.ok && response.data) {
+    yield put(setSearchedFilms(response.data.results))
+  } else {
+    console.error("Search error", response.problem);
+  }
+  yield put(setPostsListLoading(false));
+}
 
 
 export default function* postSagaWatcher() {
   yield all([
     takeLatest(getPostsList, postWorker),
     takeLatest(getSingleFilm, getSingleFilmWorker),
+    takeLatest(getSearchedFilms, getSearchedFilmsWorker),
 
   ]);
 }

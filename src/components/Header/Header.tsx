@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC, useMemo, useState, KeyboardEvent } from "react";
 import classNames from "classnames";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
@@ -21,6 +21,8 @@ import { ButtonTypes } from "src/components/Button/Button";
 import Filters from "src/components/Filters";
 
 import styles from "./Header.module.scss";
+import {useDispatch} from "react-redux";
+import {clearSearchedPosts} from "src/redux/reducers/postSlice";
 type MenuProps = {
   onClick?: () => void;
   active?: boolean;
@@ -28,6 +30,8 @@ type MenuProps = {
 
 const Header: FC<MenuProps> = (onClick, active) => {
   const { themeValue } = useThemeContext();
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [activeMenuButton, setActiveMenuButton] = useState(
     MenuButtonTypes.Home,
@@ -139,22 +143,22 @@ const Header: FC<MenuProps> = (onClick, active) => {
     setOpened(!isOpened);
   };
 
-  // const handleSearchOpened = () => {
-  //   setSearch(!isSearch);
-  //   if (isSearch && inputValue) {
-  //     dispatch(clearSearchedPosts());
-  //     navigate(`posts/${inputValue}`);
-  //     setInputValue("");
-  //   }
-  // };
+  const handleSearchOpened = () => {
+    setSearch(!isSearch);
+    if (isSearch && inputValue) {
+      dispatch(clearSearchedPosts());
+      navigate(`posts/${inputValue}`);
+      setInputValue("");
+    }
+  };
 
-  // const onKeyDown = (
-  //   event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   if (event.key === "Enter") {
-  //     handleSearchOpened();
-  //   }
-  // };
+  const onKeyDown = (
+    event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (event.key === "Enter") {
+      handleSearchOpened();
+    }
+  };
 
   return (
     <div
@@ -173,8 +177,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
             onChange={setInputValue}
             value={inputValue}
             className={styles.searchInput}
-            // onKeyDown={onKeyDown}
-            onKeyDown={() => {}}
+            onKeyDown={onKeyDown}
           />
         </div>
 
@@ -182,8 +185,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
           <Button
             type={ButtonTypes.Primary}
             title={<SearchIcon />}
-            // onClick={handleSearchOpened}
-            onClick={() => {}}
+            onClick={handleSearchOpened}
             className={styles.searchButton}
           />
 

@@ -50,9 +50,3 @@ export type SetPostsListPayload = {
   total: number;
   postsList: PostsList;
 };
-
-export type GetPostsPayload = {
-  offset: number;
-  isOverwrite: boolean;
-  ordering?: string;
-};

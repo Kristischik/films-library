@@ -63,3 +63,22 @@
     fill: $white;
   }
 }
+
+.lightContainer {
+
+  .container {
+    background-color: $white;
+    border: 2px solid $light;
+  }
+  .title {
+    color: $black;
+  }
+  .usedTheme {
+    color: $dark;
+  }
+  .activeButton {
+    svg > path {
+      fill: $dark;
+    }
+  }
+}

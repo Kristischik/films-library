@@ -29,3 +29,14 @@
   margin-top: 48px;
 
 }
+
+.lightContainer {
+  .personContainer {
+    background-color: $white;
+    border: 2px solid $light
+  }
+  .passwordContainer {
+    background-color: $white;
+    border: 2px solid $light
+  }
+}

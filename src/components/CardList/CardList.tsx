@@ -19,12 +19,6 @@ type CardListProps = {
 const CardList: FC<CardListProps> = ({ cardsList, isLoading }) => {
   const dispatch = useDispatch();
 
-  const totalPosts = useSelector(PostSelectors.getTotalPostsList);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const onNextReached = () => {
-    setCurrentPage(currentPage + 1);
-  };
 
   const onSaveClick = (card: Post) => ()  => {
     dispatch(setSaveStatus({card}))
@@ -47,13 +41,6 @@ const CardList: FC<CardListProps> = ({ cardsList, isLoading }) => {
               />
             );
           })}
-          {cardsList.length < totalPosts && (
-            <Button
-              type={ButtonTypes.Secondary}
-              title={"More"}
-              onClick={onNextReached}
-            />
-          )}
         </div>
 
       ) : (

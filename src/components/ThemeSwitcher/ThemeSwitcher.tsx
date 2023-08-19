@@ -11,7 +11,9 @@ const ThemeSwitcher = () => {
   const { themeValue, onChangeTheme } = useThemeContext();
 
   return (
-    <div>
+    <div className={classNames(styles.containerSwitch, {
+      [styles.lightContainer]: themeValue === Theme.Light,
+    })}>
       <div className={styles.title}>Color mode</div>
       <div className={styles.container}>
         {themeValue === Theme.Dark &&

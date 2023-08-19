@@ -122,9 +122,7 @@
 
 
 .lightContainer {
- .container {
    background-color: $white;
- }
 
  .header {
    background-color: $white;
@@ -134,5 +132,25 @@
   }
   .title {
     color: $black;
+  }
+
+  .navLinkButton {
+    &:hover {
+      color: $primary;
+      .icon {
+        svg > path {
+          fill: $primary;
+        }
+      }
+    }
+
+    .icon {
+      svg > path {
+        fill: $black;
+      }
+    }
+  }
+  .filtersButton {
+    background-color: $primary;
   }
 }

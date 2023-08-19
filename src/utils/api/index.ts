@@ -23,8 +23,8 @@ const getSingleFilm = (id: string) => {
   return API.get(`/titles/${id}/`, {info: "base_info"});
 };
 
-const getSearchedFilms = (title: string) => {
-  return API.get(`/titles/search/title/${title}`);
+const getSearchedFilms = (title: string, exact?: boolean, titleType?: string, page?: string, limit?: number) => {
+  return API.get(`/titles/search/title/${title}`, {exact: false, titleType, page, limit});
 }
 
 export default {

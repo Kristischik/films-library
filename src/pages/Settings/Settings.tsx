@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import styles from "./Settings.module.scss";
+import classNames from "classnames";
 import Title from "src/components/Title";
 import Input from "src/components/Input";
 import ThemeSwitcher from "src/components/ThemeSwitcher";
 import Button from "src/components/Button";
 import { ButtonTypes } from "src/components/Button/Button";
-import username from "src/components/Username";
-import Username from "src/components/Username";
 import {UsernameProps} from "src/components/Username/Username";
+import {useThemeContext} from "src/context/Theme";
+import {Theme} from "src/@types";
 
 type SettingsProps = {
   name?: UsernameProps;
@@ -15,8 +16,13 @@ type SettingsProps = {
 };
 
 const Settings: FC<SettingsProps> = ({name, email}) => {
+
+  const { themeValue } = useThemeContext();
+
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, {
+      [styles.lightContainer]: themeValue === Theme.Light,
+    })}>
       <Title title={"Profile"} />
       <div className={styles.personContainer}>
         <Input title={'Name'} placeholder={""} onChange={() => {}} value={''} />
