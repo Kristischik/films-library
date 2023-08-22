@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "src/redux/store";
-import { Post, PostsList } from "src/@types";
-import { SetPostsListPayload} from "src/redux/@types";
+import {Post, PostsList} from "src/@types";
+import {GetPostsPayload, GetSearchPostsPayload, SetPostsListPayload} from "src/redux/@types";
 
 type InitialState = {
   postsList: PostsList;
@@ -12,6 +12,8 @@ type InitialState = {
   searchedFilms: PostsList,
   totalCount: number;
   savedPosts: PostsList,
+  trendPosts: PostsList,
+  trendPostsLoading: boolean,
 };
 
 const initialState: InitialState = {
@@ -22,6 +24,8 @@ const initialState: InitialState = {
   searchedFilms: [],
   totalCount: 0,
   savedPosts: [],
+  trendPosts: [],
+  trendPostsLoading: false
 };
 
 const postSlice = createSlice({
@@ -33,7 +37,7 @@ const postSlice = createSlice({
     //   state.postsList = action.payload;
     // },
 
-    getPostsList: (_, __: PayloadAction<undefined>) => {},
+    getPostsList: (_, __: PayloadAction<GetPostsPayload>) => {},
     setPostsList: (
       state,
       action: PayloadAction<SetPostsListPayload>
@@ -55,10 +59,19 @@ const postSlice = createSlice({
       state.singlePostLoading = action.payload;
     },
 
+    // getSearchedFilms: (_, __: PayloadAction<GetSearchPostsPayload>) => {},
+    // setSearchedFilms: (state, action: PayloadAction<SetPostsListPayload>) => {
+    //   const { total, postsList } = action.payload;
+    //   state.totalCount = total;
+    //   state.searchedFilms.push(...postsList);
+    // },
+
     getSearchedFilms: (_, __: PayloadAction<string>) => {},
     setSearchedFilms: (state, action: PayloadAction<PostsList>) => {
       state.searchedFilms = action.payload;
     },
+
+
     clearSearchedPosts: (state) => {
       state.searchedFilms = [];
     },
@@ -74,6 +87,13 @@ const postSlice = createSlice({
         state.savedPosts.splice(savedIndex, 1)
     },
 
+    getTrendPosts: (_, __: PayloadAction<undefined>) => { },
+    setTrendPosts: (state, action: PayloadAction<PostsList>) => {
+      state.trendPosts = action.payload
+    },
+    setTrendPostsLoading: (state, action: PayloadAction<boolean>) => {
+      state.trendPostsLoading = action.payload;
+    },
 
   },
 });
@@ -89,6 +109,9 @@ export const {
   setSearchedFilms,
   setSaveStatus,
   clearSearchedPosts,
+  getTrendPosts,
+  setTrendPosts,
+  setTrendPostsLoading,
 } = postSlice.actions;
 
 export const PostSelectors = {
@@ -101,8 +124,13 @@ export const PostSelectors = {
   getSinglePostLoading: (state: RootState) =>
     state.postReducer.singlePostLoading,
   getSearchedFilms: (state: RootState) => state.postReducer.searchedFilms,
+  getTotalSearchedPosts: (state: RootState) =>
+    state.postReducer.totalCount,
 
   getSavedPosts: (state: RootState) => state.postReducer.savedPosts,
+
+  getTrendPosts: (state: RootState) => state.postReducer.trendPosts,
+  getTrendPostsLoading: (state: RootState) => state.postReducer.trendPostsLoading,
 
 };
 

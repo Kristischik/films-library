@@ -27,6 +27,7 @@
   font-weight: 700;
   line-height: 24px;
   cursor: pointer;
+  max-width: 266px;
 }
 
 .iconsContainer {
@@ -36,28 +37,52 @@
   width: 246px;
   display: flex;
   justify-content: space-between;
-}
 
-.iconRating {
-  padding: 0 8px;
-  background-color: $green;
-  border-radius: 6px;
-  font-family: "Exo 2", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  cursor: pointer;
-  color: $white;
-}
 
-.iconBookmark {
-  svg > path {
-    fill: $green;
+  .rating {
+
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: "Exo 2", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ratingOrange {
+    background-color: $orange;
+  }
+
+  .ratingYellow {
+    background-color: $yellow;
+  }
+
+  .ratingGreen {
+    background-color: $green;
+  }
+
+
+  .iconBookmark {
+    svg > path {
+      fill: $green;
+    }
   }
 }
-
 .lightContainer {
   .text {
     color: $black;
   }
+}
+
+.genre {
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: $light;
+  max-width: 266px;
 }

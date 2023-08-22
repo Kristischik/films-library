@@ -11,6 +11,7 @@ import Settings from "src/pages/Settings";
 import Search from "src/pages/Search";
 import SingleFilm from "src/pages/SingleFilm";
 import Favourite from "src/pages/Favourite";
+import Trends from "src/pages/Trends";
 
 export enum RoutesList {
   Home = "/",
@@ -20,6 +21,7 @@ export enum RoutesList {
   Search = "/posts/:search",
   SingleFilm = '/film/:id',
   Favourite = "/saved",
+  Trends = "/trends",
   Default = "*",
 }
 
@@ -39,6 +41,8 @@ const Router = () => {
                  element={<Search/>}/>
           <Route path={RoutesList.Favourite}
                  element={<Favourite/>}/>
+          <Route path={RoutesList.Trends}
+                 element={<Trends/>}/>
 
           <Route
             path={RoutesList.Default}

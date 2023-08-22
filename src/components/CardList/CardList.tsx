@@ -1,15 +1,12 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 
 import {Post, PostsList} from "src/@types";
 import Card from "src/components/Card";
-
 import styles from "./CardList.module.scss";
 import Loader from "src/components/Loader";
 import EmptyState from "src/components/EmptyState";
-import Button from "src/components/Button";
-import {ButtonTypes} from "src/components/Button/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {PostSelectors, setSaveStatus} from "src/redux/reducers/postSlice";
+import {useDispatch} from "react-redux";
+import {setSaveStatus} from "src/redux/reducers/postSlice";
 
 type CardListProps = {
   cardsList: PostsList;

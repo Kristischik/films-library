@@ -66,7 +66,7 @@ const Header: FC<MenuProps> = (onClick, active) => {
         ),
       },
       {
-        path: RoutesList.SignUp,
+        path: RoutesList.Trends,
         key: MenuButtonTypes.Trends,
         title: (
           <div

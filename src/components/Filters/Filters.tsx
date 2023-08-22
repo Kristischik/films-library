@@ -1,6 +1,6 @@
 import React, { FC, useMemo, useState } from "react";
 
-import { CloseIcon } from "src/assets/icons";
+import {CloseIcon} from "src/assets/icons";
 import Input from "src/components/Input";
 import Button from "src/components/Button";
 import TabsList from "src/components/TabsList";
@@ -21,6 +21,7 @@ type FiltersType = {
 const Filters: FC<FiltersType> = (onClick, onSubmit) => {
   const { themeValue } = useThemeContext();
   const [activeTab, setActiveTab] = useState(TabsTypes.Year);
+  const [isClosed, setClosed] = useState(false);
   const tabsList = useMemo(
     () => [
       { key: TabsTypes.Rating, title: "Rating" },
@@ -30,6 +31,9 @@ const Filters: FC<FiltersType> = (onClick, onSubmit) => {
   );
   const onTabClick = (tab: TabsTypes) => () => {
     setActiveTab(tab);
+  };
+  const handleFiltersClosed = () => {
+    setClosed(!isClosed);
   };
 
   return (
@@ -41,7 +45,12 @@ const Filters: FC<FiltersType> = (onClick, onSubmit) => {
       <div className={styles.titleContainer}>
         <Title title={"Filters"} />
         <div className={styles.closeIcon}>
-          <CloseIcon />
+          <Button
+            type={ButtonTypes.Primary}
+            title={<CloseIcon />}
+            onClick={handleFiltersClosed}
+            className={styles.filtersButton}
+          />
         </div>
       </div>
 

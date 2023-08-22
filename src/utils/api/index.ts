@@ -15,21 +15,28 @@ const signUpUser = (data: SignUpUserData) => {
   return API.post("/auth/register", data);
 };
 
-const getPosts = () => {
-  return API.get("/titles" , {limit: PER_PAGE, list: "top_boxoffice_200"});
+const getPosts = ( limit: number, page?: string,) => {
+  return API.get("/titles" , {info: "base_info", limit: PER_PAGE, sort: 'year.decr', list: 'top_boxoffice_200', page});
 };
 
 const getSingleFilm = (id: string) => {
   return API.get(`/titles/${id}/`, {info: "base_info"});
 };
 
-const getSearchedFilms = (title: string, exact?: boolean, titleType?: string, page?: string, limit?: number) => {
-  return API.get(`/titles/search/title/${title}`, {exact: false, titleType, page, limit});
+const getSearchedFilms = (title: string, page?: number) => {
+  return API.get(`/titles/search/title/${title}`, { info: "base_info", exact: false, limit: 10, page});
 }
+
+const getTrendPosts = () => {
+  return API.get("/titles/random", {info: "base_info", sort: 'year.decr', list: 'top_boxoffice_200', limit: 10});
+
+};
+
 
 export default {
   signUpUser,
   getPosts,
   getSingleFilm,
   getSearchedFilms,
+  getTrendPosts
 };
